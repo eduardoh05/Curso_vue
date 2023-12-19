@@ -27,10 +27,18 @@
           </div>
         </div>
       </div>
+      <form @submit.prevent="addPost">
+        <div class="form-group">
+          <textarea v-model="newPostText" name="" id="" cols="30" rows="10" class="form-input"></textarea>
+        </div>
+        <div class="form-actions">
+          <button class="btn-blue">Submit post</button>
+        </div>
+      </form>
     </div>
-  </template>
+</template>
   
-  <script>
+ <script>
   import sourceData from '@/data.json'
   
   export default {
@@ -44,13 +52,17 @@
       return {
         threads: sourceData.threads,
         posts: sourceData.posts,
-        users: sourceData.users
+        users: sourceData.users,
+        newPostText: ''
       }
     },
 
     computed:{
       thread(){
         return this.threads.find(thread => thread.id === this.id)
+      },
+      threadPosts () {
+        return this.posts.filter(post => post.threadId === this.id)
       }
     },
 
@@ -60,11 +72,27 @@
       },
       userById(userId) {
         return this.users.find(u => u.id === userId)
+      },
+      addPost(){
+        console.log("running")
+        const postId = 'qqqq' + Math.random()
+        const post = {
+          id: postId,
+          text: this.newPostText,
+          publishedAt: Math.floor(Date.now()/1000),
+          threadId: this.id,
+          userId: "rpbB8C6ifrYmNDufMERWfQUoa202"
+        }
+        this.posts.push(post)
+        this.thread.posts.push(postId)
+
+        this.newPostText = ''
       }
     }
-  }
-  </script>
+}
+</script>
 
 <style scoped>
 
 </style>
+
