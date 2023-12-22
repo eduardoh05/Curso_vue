@@ -1,6 +1,7 @@
 import PageHome from '@/pages/PageHome'
 import PageThreadShow from '@/pages/PageThreadShow'
 import PageNotFound from '@/pages/PageNotFound'
+import PageSinglePost from '@/pages/PageSinglePost'
 import {createRouter, createWebHistory} from 'vue-router'
 import sourceData from '@/data.json'
 
@@ -39,6 +40,12 @@ const routes = [
         path: '/:pathMatch(.*)*',
         name: 'NotFound',
         component: PageNotFound
+    },
+    {
+        path: '/post/:id_post',
+        name: 'PageSinglePost',
+        component: PageSinglePost,
+        props: true
     }
 ]
 

@@ -14,11 +14,12 @@
   import PostEditor from '@/components/PostEditor'
   import PostList from '@/components/PostList'
 
+
   
   export default {
     components:{
       PostEditor,
-      PostList
+      PostList,
     },
     props:{
       id:{
