@@ -5,7 +5,7 @@
 
             <h2 class="list-title">{{ category.name }} </h2>
 
-            <forum-list :forums="forums"></forum-list>
+            <forum-list :forums="getCategoryForums(category.id)"></forum-list>
 
         </div>
 
@@ -31,6 +31,11 @@ export default {
         return{
         forums: sourceData.forums
     }
+    }, 
+    methods: {
+        getCategoryForums(categoryId){
+            return this.forums.filter(forum => forum.categoryId === categoryId)
+        }
     }
 }
 </script>
