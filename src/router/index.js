@@ -5,7 +5,7 @@ import ForumShow from '@/pages/ForumShow'
 import PageSinglePost from '@/pages/PageSinglePost'
 import {createRouter, createWebHistory} from 'vue-router'
 import sourceData from '@/data.json'
-
+import PageCategory from '@/pages/PageCategory'
 
 
 
@@ -20,6 +20,12 @@ const routes = [
         name: 'ForumShow',
         component: ForumShow,
         props: true
+    },
+    {
+        path:'/category/:id',
+        name:'PageCategory',
+        component: PageCategory,
+        props:true
     },
     {
         path: '/thread/:id',

@@ -3,9 +3,15 @@
 
         <div class="category-list" v-for="category in categories" :key= "category.id">
 
-            <h2 class="list-title">{{ category.name }} </h2>
+            <router-link 
+            :to="{name: 'PageCategory', params: {id: category.id}}">
 
-            <forum-list :forums="getCategoryForums(category.id)"></forum-list>
+            <h2 class="list-title">{{ category.name }} </h2>
+            </router-link>
+            
+
+            <forum-list :forums="getCategoryForums(category.id)"
+            :categoryName="categoryName"></forum-list>
 
         </div>
 
